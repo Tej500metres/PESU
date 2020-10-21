@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "rlutil.h": "c",
+        "cerrno": "cpp"
+    }
+}
