@@ -1,0 +1,92 @@
+Intal - Non-negative Integers of Arbitary Length
+
+Intal is a library that builds logic to deal with arbitrary precision positive Integers by storing them in string.
+This coded library may not be memory efficient but suffient enough to do the required task . 
+
+
+Main Functions used in the library:
+
+intal_add:This function adds two Intal digit-wise from right to left. If their addition results in two digits,
+then one is carried over to the next digit for addition.
+
+intal_compare:This function compares the length of two intals. If the length are same,
+then each digit is compared from left to right until they are unequal and returns 1 or -1 accordingly .
+If all digits of two intals match, zero is returned.
+
+intal_diff:This function subtracts two Intals digit-wise from right to left. If the subtracting digit is larger, the
+digit on top is added with 10 and 1 is subtracted from the next digit to be processed. The larger numberis always 
+placed on top using intal_compare function coded earlier.
+
+intal_multiply:This function follows naive multiplication with O(mn) complexity. Each digit from the second number is
+multiplied with the entire first number and the resulting products are added shifting each result by one place.
+
+intal_mod: This function uses the long division method to compute where the quotient isn't stored and the resultuntant
+remainder is the one that is cached from each computation .
+
+intal_pow:This function follows a divide and conquer method for calculating the power in a n iterative manner. This way
+we avoid large stack trace and effectively manage memory.
+
+intal_gcd: Uses the iterative algorithm:
+ALGORITHM:
+  gcd(a,b):
+    if a = 0:
+      return b
+    gcd(b mod a, a);
+
+intal_fibonacci: The fibonacci algorithm using memoization where:
+LOGIC:
+  F(0) = Intal(0)
+  F(1) = Intal(1)
+  F(n) = F(n - 1) + F(n - 2)
+
+intal_factorial: Iterative implementation of factorial with memoization where:
+LOGIC:
+  F(0) = Intal(1)
+  F(1) = Intal(1)
+  F(n) = Intal(n) + F(n - 2)
+
+intal_bincoeff: Binomial coefficient using bottoms up approach using memoization where:
+LOGIC:
+  C(n,k) = C(n-1,k) + C(n-1,k-1)
+  C(n,0) = 1
+  C(n,1) = n
+  We know that C(n,k) depends on C(n-1,k) and C(n-1,k-1)
+  We compute C(1,0), C(1,1) first then C(2,0), C(2,1) and C(2,2) using
+  C(1,0), C(1,1). We build up this until C(n, k)
+  Given C(n + 1, x) only depends on C(n, y), we need O(n) extra space
+
+intal_max: Uses linear traversal and intal_compare to compare each number with instantaneous
+highest value to find the absolute maximum
+
+intal_min: Uses linear traversal and intal_compare to compare each number with instantaneous
+lowest value to find the absolute minimum
+
+intal_search: Compares the key with each element of array and uses intal_compare to find
+the position of the key in array.
+
+intal_binsearch: Compares the key with each element of array using divide and conquer
+and uses intal_compare to find the position of the key in array.
+
+intal_sort: Uses QuickSort to sort the array
+
+coin_row_problem: Uses a O(n) DP table to implement coin row problem using:
+LOGIC:
+CR(0) = 0
+CR(1) = Coin[1]
+CR(n) = MAX(CR(n - 1), Coin[n] + CR(n - 2));
+
+
+ADVANTAGES OF INTAL LIBRARY:
+* Can be used as one of the text processing for integers in AI, Robotics,etc.
+* INTAL with Modification can be used to represented as BASE - 128 number.
+* INTAL can be used to parse large number like digits of PI.
+* INTAL can be used in Scientific Computation as like the ones in CERN and LIGO.
+
+FUTURE IMPROVEMENTS:
+* INTALS for neural networks.
+* Use parallel algorithms and increase efficiency.
+* Extend to negative numbers.
+* Use raw pointers and shift operations to make the implementation real-world.
+* Double numbers can be split and into whole and floating point part and implement separate
+  operations for both parts extending it to floating point numbers.
+* Use GPU compute for faster computation.
